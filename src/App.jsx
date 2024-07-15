@@ -10,7 +10,7 @@ export default function App() {
   const [dessertData, setDessertData] = useState(null);
 
   // State for cart items.
-  const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState([]);
 
   return (
     <DessertContextProvider values={{ dessertData, setDessertData }}>

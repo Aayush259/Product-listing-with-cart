@@ -4,8 +4,40 @@ import { useCartData } from '../context/CartDataContext.jsx';
 
 export default function DessertCard({ dessertItem }) {
 
+    // Getting dessert details.
+    const dessertName = dessertItem['name'];
+    const dessertCategory = dessertItem['category'];
+    const dessertPrice = dessertItem['price'];
+
     // Getting cartItems and its setter function from cart data context.
     const { cartItems, setCartItems } = useCartData();
+
+    // State for item count in cart.
+    const [countInCart, setCountInCart] = useState(0);
+
+    // When count of dessert item in cart is changed, update it in the cartItems context.
+    useEffect(() => {
+
+        // Copy of cart items array.
+        const updatedCartItems = [...cartItems];
+
+        // Getting index of that dessert item, whose count is changed (it is removed or added to cart).
+        const indexOfDessertItem = updatedCartItems.findIndex(obj => (obj['name'] === dessertName));
+
+        // If the dessert item is present already in cart, then increase it's count, else if the count of the dessert item is greater than 0, then add this item in the updatedCartItems array.
+        if (indexOfDessertItem >= 0) {
+            updatedCartItems[indexOfDessertItem] = {name: dessertName, count: countInCart};
+        } else if (countInCart > 0) {
+            updatedCartItems.push({
+                name: dessertName,
+                count: countInCart
+            });
+        }
+
+        // Update the original cartItems array.
+        setCartItems(updatedCartItems);
+
+    }, [countInCart]);
 
     // This function returns the dessert image src based on given width.
     const getImageURL = (width) => {
@@ -38,29 +70,9 @@ export default function DessertCard({ dessertItem }) {
         };
     }, []);
 
-    // Getting dessert details.
-    const dessertName = dessertItem['name'];
-    const dessertCategory = dessertItem['category'];
-    const dessertPrice = dessertItem['price'];
-
-    // Add an object for dessertItem in cartItems state.
-    useEffect(() => {
-        
-        setCartItems(prevCartItems => ({
-            ...prevCartItems,
-            [dessertName]: {
-                name: dessertName,
-                price: dessertPrice,
-                addCount: 0
-            }
-        }));
-    }, []);
-
     // This function updates the number of items added in the cart.
     const addItemToCart = () => {
-        const updatedCart = cartItems;
-        updatedCart[dessertName]['addCount'] += 1;
-        setCartItems(updatedCart);
+        setCountInCart(prevCount => prevCount + 1);
     };
 
     return (
