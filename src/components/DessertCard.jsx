@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import addToCartIcon from '../images/icon-add-to-cart.svg';
 import { useCartData } from '../context/CartDataContext.jsx';
+import AddToCartButton from './AddToCartButton.jsx';
 
 export default function DessertCard({ dessertItem }) {
 
@@ -70,19 +70,21 @@ export default function DessertCard({ dessertItem }) {
         };
     }, []);
 
-    // This function updates the number of items added in the cart.
+    // This function increase the number of items in cart.
     const addItemToCart = () => {
         setCountInCart(prevCount => prevCount + 1);
     };
+
+    // This function reduce the number of items in cart.
+    const removeItemFromCart = () => {
+        setCountInCart(prevCount => prevCount - 1);
+    }
 
     return (
         <div className="w-52 max-w-[90vw] mx-4 my-4">
             <img src={dessertImage} alt={dessertName} className="rounded-lg w-full border-2 border-transparent" />
 
-            <button className="flex items-center gap-2 border border-rose400 py-2 px-4 mx-auto -translate-y-1/2 rounded-3xl bg-rose50" onClick={addItemToCart}>
-                <img src={addToCartIcon} alt="Add to cart" />
-                <span>Add to Cart</span>
-            </button>
+            <AddToCartButton addedInCartCount={countInCart} addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart} />
 
             <div>
                 <p className="text-rose500 text-sm -mt-2">{dessertCategory}</p>
