@@ -40,8 +40,8 @@ export default function DessertCard({ dessertItem }) {
     const dessertPrice = dessertItem['price'];
 
     return (
-        <div className="w-52 mx-4 my-8">
-            <img src={dessertImage} alt={dessertName} className="rounded-lg w-full" />
+        <div className="w-52 max-w-[90vw] mx-4 my-4">
+            <img src={dessertImage} alt={dessertName} className="rounded-lg w-full border-2 border-transparent" />
 
             <button className="flex items-center gap-2 border border-rose400 py-2 px-4 mx-auto -translate-y-1/2 rounded-3xl bg-rose50">
                 <img src={addToCartIcon} alt="Add to cart" />
@@ -49,9 +49,9 @@ export default function DessertCard({ dessertItem }) {
             </button>
 
             <div>
-                <p className="text-rose500 text-sm">{dessertCategory}</p>
+                <p className="text-rose500 text-sm -mt-2">{dessertCategory}</p>
                 <p className="text-rose900 font-semibold">{dessertName}</p>
-                <p className="text-redGiven font-semibold">${dessertPrice}</p>
+                <p className="text-redGiven font-semibold">${dessertPrice.toFixed(2)}</p>
             </div>
         </div>
     );
