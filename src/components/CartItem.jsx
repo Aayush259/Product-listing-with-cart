@@ -1,7 +1,7 @@
 import React from 'react';
 import removeIcon from '../images/icon-remove-item.svg';
 
-export default function CartItem({ item }) {
+export default function CartItem({ item, removeItemFromCartCompletely }) {
 
     // Item details to display in cart.
     const itemName = item['name'];
@@ -19,7 +19,7 @@ export default function CartItem({ item }) {
                     <span className="font-extralight text-rose900 ml-3 text-sm">${totalPrice}</span>
                 </p>
             </div>
-            <button className="rounded-full">
+            <button className="rounded-full" onClick={() => {removeItemFromCartCompletely(itemName)}}>
                 <img src={removeIcon} alt="Remove item" className="border border-rose300 rounded-full h-4 p-[2px] hover:border-rose900 " />
             </button>
         </div>

@@ -7,11 +7,12 @@ import ConfirmOrderButton from './ConfirmOrderButton.jsx';
 export default function Cart() {
 
     // Getting cartItems from cart data context.
-    const { cartItems } = useCartData();
+    const { cartItems, setCartItems } = useCartData();
 
     // State for total number of items present in cart.
     const [totalItemsInCart, setTotalItemsInCart] = useState(0);
 
+    // State for total order price of cart.
     const [totalOrderPrice, setTotalOrderPrice] = useState(0);
 
     // Update total number of items and total price of all items in cart when cartItems from context changes.
@@ -28,6 +29,11 @@ export default function Cart() {
         setTotalOrderPrice(totalPrice);
     }, [cartItems]);
 
+    // This function removes the item from cart completely, means all the counts are removed.
+    const removeItemFromCartCompletely = (itemName) => {
+        setCartItems(prevCartItems => prevCartItems.filter(items => items['name'] !== itemName));
+    };
+
     return (
         <div className="relative flex-grow max-w-96 min-w-80 mr-2">
             <div className="bg-rose50 sticky top-0 left-0 w-96 min-h-56 m-4 p-4 pb-1 rounded-lg">
@@ -39,7 +45,7 @@ export default function Cart() {
                     </> : <>
                     {
                         cartItems.map(item => item['count'] > 0 ?
-                            <CartItem key={item['name']} item={item} /> : null
+                            <CartItem key={item['name']} item={item} removeItemFromCartCompletely={removeItemFromCartCompletely} /> : null
                         )
                     }
                     <ConfirmOrderButton totalOrderPrice={totalOrderPrice} />

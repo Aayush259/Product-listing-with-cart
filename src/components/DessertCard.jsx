@@ -15,6 +15,22 @@ export default function DessertCard({ dessertItem }) {
     // State for item count in cart.
     const [countInCart, setCountInCart] = useState(0);
 
+    // When cartItems array is changed, this useEffect will check whether the current dessert is present in cartItems. If it is not present, then count of that dessert is 0 in cart.
+    useEffect(() => {
+
+        // Copy of cart items.
+        const cartItemsCopy = [...cartItems];
+
+        // Getting index of current dessert in cartItemsCopy.
+        const currentItemIndex = cartItemsCopy.findIndex(item => (item['name'] === dessertName));
+
+        // If current dessert is not present, then set the count of current dessert to 0.
+        if (currentItemIndex < 0) {
+            setCountInCart(0);
+        };
+
+    }, [cartItems]);
+
     // When count of dessert item in cart is changed, update it in the cartItems context.
     useEffect(() => {
 
@@ -22,7 +38,7 @@ export default function DessertCard({ dessertItem }) {
         const updatedCartItems = [...cartItems];
 
         // Getting index of that dessert item, whose count is changed (it is removed or added to cart).
-        const indexOfDessertItem = updatedCartItems.findIndex(obj => (obj['name'] === dessertName));
+        const indexOfDessertItem = updatedCartItems.findIndex(item => (item['name'] === dessertName));
 
         // If the dessert item is present already in cart, then increase it's count, else if the count of the dessert item is greater than 0, then add this item in the updatedCartItems array.
         if (indexOfDessertItem >= 0) {
@@ -83,7 +99,7 @@ export default function DessertCard({ dessertItem }) {
     // This function reduce the number of items in cart.
     const removeItemFromCart = () => {
         setCountInCart(prevCount => prevCount - 1);
-    }
+    };
 
     return (
         <div className="w-52 max-w-[90vw] mx-4 my-4">
