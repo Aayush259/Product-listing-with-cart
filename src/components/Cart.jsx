@@ -35,8 +35,8 @@ export default function Cart() {
     };
 
     return (
-        <div className="relative flex-grow max-w-96 min-w-80 mr-2">
-            <div className="bg-rose50 sticky top-0 left-0 w-96 min-h-56 m-4 p-4 pb-1 rounded-lg">
+        <div className="relative flex-grow max-w-[90vw] sm:max-w-96 min-w-fit sm:mr-2">
+            <div className="bg-rose50 sticky top-0 left-0 w-full min-h-56 mt-4 sm:m-4 p-4 pb-1 rounded-lg">
                 <p className="text-redGiven font-bold text-2xl mb-4">Your Cart ({totalItemsInCart})</p>
                 {
                     totalItemsInCart <= 0 ? <>

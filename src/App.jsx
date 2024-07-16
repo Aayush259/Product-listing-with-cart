@@ -15,7 +15,7 @@ export default function App() {
   return (
     <DessertContextProvider values={{ dessertData, setDessertData }}>
       <CartDataProvider values={{ cartItems, setCartItems }}>
-        <div className="bg-rose100 p-8 xl:p-12 min-h-[100vh] w-full overflow-x-hidden flex justify-center">
+        <div className="bg-rose100 p-8 xl:p-12 min-h-[100vh] w-full overflow-x-hidden flex justify-center items-center flex-col sm:flex-row sm:items-start">
           <DessertContainer />
           <Cart />
         </div>

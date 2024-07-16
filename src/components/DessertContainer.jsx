@@ -18,7 +18,7 @@ export default function DessertContainer() {
     }, []);
 
     return (
-        <div className=" max-w-[800px]">
+        <div className="max-w-[750px]">
             <h1 className="ml-14 mb-3 text-rose900 text-3xl font-bold">Desserts</h1>
             <div className="flex flex-wrap justify-center">
             {
