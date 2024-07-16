@@ -8,7 +8,7 @@ export default function AddToCartButton({ addedInCartCount, addItemToCart, remov
     return (
         <>
             {
-                addedInCartCount <= 0 ? <button className="flex items-center min-w-36 gap-2 border border-rose400 py-3 px-5 mx-auto -translate-y-1/2 rounded-3xl bg-rose50" onClick={addItemToCart}>
+                addedInCartCount <= 0 ? <button className="flex items-center min-w-36 gap-2 border border-rose400 py-3 px-5 mx-auto -translate-y-1/2 rounded-3xl bg-rose50 hover:text-redGiven hover:border-redGiven" onClick={addItemToCart}>
 
                     <img src={addToCartIcon} alt="Add to cart" />
                     <span>Add to Cart</span>
