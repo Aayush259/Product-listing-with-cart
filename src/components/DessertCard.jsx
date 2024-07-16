@@ -26,10 +26,15 @@ export default function DessertCard({ dessertItem }) {
 
         // If the dessert item is present already in cart, then increase it's count, else if the count of the dessert item is greater than 0, then add this item in the updatedCartItems array.
         if (indexOfDessertItem >= 0) {
-            updatedCartItems[indexOfDessertItem] = {name: dessertName, count: countInCart};
+            updatedCartItems[indexOfDessertItem] = {
+                name: dessertName,
+                price: dessertPrice,
+                count: countInCart
+            };
         } else if (countInCart > 0) {
             updatedCartItems.push({
                 name: dessertName,
+                price: dessertPrice,
                 count: countInCart
             });
         }
