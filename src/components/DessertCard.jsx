@@ -9,6 +9,7 @@ export default function DessertCard({ dessertItem }) {
     const dessertCategory = dessertItem['category'];
     const dessertPrice = dessertItem['price'];
     const dessertThumbnail = dessertItem['image']['thumbnail'];
+    const baseURL = '/Product-listing-with-cart';
 
     // Getting cartItems and its setter function from cart data context.
     const { cartItems, setCartItems } = useCartData();
@@ -47,14 +48,14 @@ export default function DessertCard({ dessertItem }) {
                 name: dessertName,
                 price: dessertPrice,
                 count: countInCart,
-                thumbnail: `/Product-listing-with-cart/${dessertThumbnail}`
+                thumbnail: `${baseURL}${dessertThumbnail}`
             };
         } else if (countInCart > 0) {
             updatedCartItems.push({
                 name: dessertName,
                 price: dessertPrice,
                 count: countInCart,
-                thumbnail: `/Product-listing-with-cart/${dessertThumbnail}`
+                thumbnail: `${baseURL}${dessertThumbnail}`
             });
         }
 
@@ -67,11 +68,11 @@ export default function DessertCard({ dessertItem }) {
     const getImageURL = (width) => {
 
         if (width >= 1024) {
-            return `/Product-listing-with-cart/${dessertItem['image']['desktop']}`;
+            return `${baseURL}${dessertItem['image']['desktop']}`;
         } else if (width >= 768) {
-            return `/Product-listing-with-cart/${dessertItem['image']['tablet']}`;
+            return `${baseURL}${dessertItem['image']['tablet']}`;
         } else {
-            return `/Product-listing-with-cart/${dessertItem['image']['mobile']}`;
+            return `${baseURL}${dessertItem['image']['mobile']}`;
         }
     };
 
