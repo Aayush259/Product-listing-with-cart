@@ -16,7 +16,7 @@ export default function OrderConfirmedWindow() {
     };
 
     useEffect(() => {
-        
+
         // Scroll to top.
         window.scrollTo({
             top: 0,
@@ -33,7 +33,7 @@ export default function OrderConfirmedWindow() {
 
     return (
         <div className="absolute top-0 left-0 bottom-0 right-0 w-full py-5 bg-black bg-opacity-30 min-h-[100vh] flex flex-col justify-center items-center overflow-auto">
-            <div className="bg-rose50 p-8 w-[550px] max-w-[100vw] rounded-lg mt-32">
+            <div className="fixed bottom-0 sm:static bg-rose50 p-4 w-[550px] max-w-[100vw] rounded-bl-none rounded-br-none rounded-xl mt-32 sm:px-8 sm:rounded-br-xl sm:rounded-bl-xl">
                 <img src={orderConfirmedIcon} alt="Order confirmed" />
 
                 <p className="mt-6 font-bold text-rose900 text-4xl">Order Confirmed</p>
@@ -54,7 +54,7 @@ export default function OrderConfirmedWindow() {
                 </div>
 
                 <button
-                    className="bg-redGiven w-full py-3 px-2 rounded-3xl text-rose50 font-semibold mt-8 mb-4"
+                    className="bg-redGiven w-full py-3 px-2 rounded-3xl text-rose50 font-semibold mt-8 mb-4 hover:opacity-80"
                     onClick={startNewOrder}
                 >
                     Start New Order

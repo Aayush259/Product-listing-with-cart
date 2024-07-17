@@ -18,7 +18,7 @@ export default function ConfirmOrderButton({ totalOrderPrice, setOrderConfirmed 
             </div>
 
             <button
-                className="bg-redGiven w-full py-3 px-2 rounded-3xl text-rose50 font-semibold"
+                className="bg-redGiven w-full py-3 px-2 rounded-3xl text-rose50 font-semibold hover:opacity-80"
                 onClick={() => {setOrderConfirmed(true)}}
             >
                 Confirm Order
