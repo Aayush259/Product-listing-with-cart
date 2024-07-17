@@ -106,7 +106,7 @@ export default function DessertCard({ dessertItem }) {
 
     return (
         <div className="w-52 max-w-[90vw] mx-4 my-4">
-            <img src={dessertImage} alt={dessertName} className="rounded-lg w-full border-2 border-transparent" />
+            <img src={dessertImage} alt={dessertName} className={`rounded-lg w-full border-2 ${countInCart > 0 ? "border-redGiven" : "border-transparent"}`} />
 
             <AddToCartButton addedInCartCount={countInCart} addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart} />
 
