@@ -47,14 +47,14 @@ export default function DessertCard({ dessertItem }) {
                 name: dessertName,
                 price: dessertPrice,
                 count: countInCart,
-                thumbnail: dessertThumbnail
+                thumbnail: `/Product-listing-with-cart/${dessertThumbnail}`
             };
         } else if (countInCart > 0) {
             updatedCartItems.push({
                 name: dessertName,
                 price: dessertPrice,
                 count: countInCart,
-                thumbnail: dessertThumbnail
+                thumbnail: `/Product-listing-with-cart/${dessertThumbnail}`
             });
         }
 
@@ -67,11 +67,11 @@ export default function DessertCard({ dessertItem }) {
     const getImageURL = (width) => {
 
         if (width >= 1024) {
-            return dessertItem['image']['desktop'];
+            return `/Product-listing-with-cart/${dessertItem['image']['desktop']}`;
         } else if (width >= 768) {
-            return dessertItem['image']['tablet'];
+            return `/Product-listing-with-cart/${dessertItem['image']['tablet']}`;
         } else {
-            return dessertItem['image']['mobile'];
+            return `/Product-listing-with-cart/${dessertItem['image']['mobile']}`;
         }
     };
 

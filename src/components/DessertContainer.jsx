@@ -16,7 +16,7 @@ export default function DessertContainer() {
     // Fetching dessertData from data.json file and updating the data in the dessertData state.
     useEffect(() => {
 
-        fetch('/data.json')
+        fetch('/Product-listing-with-cart/data.json')
         .then(response => response.json())
         .then(data => {
             setDessertData(data);
