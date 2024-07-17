@@ -1,11 +1,17 @@
 import React from 'react';
 
-export default function ConfirmedItemInOrder({ thumbnailIcon, dessertName, dessertPrice, dessertCount }) {
+export default function ConfirmedItemInOrder({ cartItem }) {
+
+    // Extracting details from cart item.
+    const thumbnail = cartItem['thumbnail'];
+    const dessertName = cartItem['name'];
+    const dessertPrice = cartItem['price'];
+    const dessertCount = cartItem['count'];
 
     return (
-        <div className="flex flex-row items-center justify-between pb-4 border-b">
+        <div className="flex flex-row items-center justify-between mt-4 px-4 pb-4 border-b">
             <div className="flex flex-row items-center gap-4">
-                <img src={thumbnailIcon} alt={dessertName} className="w-14 rounded-md" />
+                <img src={thumbnail} alt={dessertName} className="w-14 rounded-md" />
 
                 <div className="flex flex-col justify-between gap-2 text-sm">
                     <p className="font-semibold text-rose900">{dessertName}</p>
