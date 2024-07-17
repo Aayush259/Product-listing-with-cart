@@ -8,6 +8,7 @@ export default function DessertCard({ dessertItem }) {
     const dessertName = dessertItem['name'];
     const dessertCategory = dessertItem['category'];
     const dessertPrice = dessertItem['price'];
+    const dessertThumbnail = dessertItem['image']['thumbnail'];
 
     // Getting cartItems and its setter function from cart data context.
     const { cartItems, setCartItems } = useCartData();
@@ -45,13 +46,15 @@ export default function DessertCard({ dessertItem }) {
             updatedCartItems[indexOfDessertItem] = {
                 name: dessertName,
                 price: dessertPrice,
-                count: countInCart
+                count: countInCart,
+                thumbnail: dessertThumbnail
             };
         } else if (countInCart > 0) {
             updatedCartItems.push({
                 name: dessertName,
                 price: dessertPrice,
-                count: countInCart
+                count: countInCart,
+                thumbnail: dessertThumbnail
             });
         }
 

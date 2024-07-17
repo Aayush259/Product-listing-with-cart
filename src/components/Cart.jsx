@@ -7,13 +7,10 @@ import ConfirmOrderButton from './ConfirmOrderButton.jsx';
 export default function Cart() {
 
     // Getting cartItems from cart data context.
-    const { cartItems, setCartItems } = useCartData();
+    const { cartItems, setCartItems, setOrderConfirmed, totalOrderPrice, setTotalOrderPrice } = useCartData();
 
     // State for total number of items present in cart.
     const [totalItemsInCart, setTotalItemsInCart] = useState(0);
-
-    // State for total order price of cart.
-    const [totalOrderPrice, setTotalOrderPrice] = useState(0);
 
     // Update total number of items and total price of all items in cart when cartItems from context changes.
     useEffect(() => {
@@ -48,7 +45,7 @@ export default function Cart() {
                             <CartItem key={item['name']} item={item} removeItemFromCartCompletely={removeItemFromCartCompletely} /> : null
                         )
                     }
-                    <ConfirmOrderButton totalOrderPrice={totalOrderPrice} />
+                    <ConfirmOrderButton totalOrderPrice={totalOrderPrice} setOrderConfirmed={setOrderConfirmed} />
                     </>
                 }
             </div>

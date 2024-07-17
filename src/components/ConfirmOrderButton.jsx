@@ -1,7 +1,7 @@
 import React from 'react';
 import carbonNeutralIcon from '../images/icon-carbon-neutral.svg';
 
-export default function ConfirmOrderButton({ totalOrderPrice }) {
+export default function ConfirmOrderButton({ totalOrderPrice, setOrderConfirmed }) {
 
     return (
         <div className="my-6">
@@ -17,7 +17,13 @@ export default function ConfirmOrderButton({ totalOrderPrice }) {
                 </p>
             </div>
 
-            <button className="bg-redGiven w-full py-3 px-2 rounded-3xl text-rose50 font-semibold">Confirm Order</button>
+            <button
+                className="bg-redGiven w-full py-3 px-2 rounded-3xl text-rose50 font-semibold"
+                onClick={() => {setOrderConfirmed(true)}}
+            >
+                Confirm Order
+            </button>
+
         </div>
     );
 };
