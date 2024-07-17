@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
-import Cart from './components/Cart.jsx';
+import React, { Suspense, lazy, useState } from 'react';
 import { DessertContextProvider } from './context/DessertDataContext.jsx';
-import DessertContainer from './components/DessertContainer.jsx';
 import { CartDataProvider } from './context/CartDataContext.jsx';
-import OrderConfirmedWindow from './components/OrderConfirmedWindow.jsx';
+import Loader from './components/Loader.jsx';
+const Cart = lazy(() => import('./components/Cart.jsx'));
+const DessertContainer = lazy(() => import('./components/DessertContainer.jsx'));
+const OrderConfirmedWindow = lazy(() => import('./components/OrderConfirmedWindow.jsx'));
 
 export default function App() {
 
@@ -23,11 +24,13 @@ export default function App() {
     <DessertContextProvider values={{ dessertData, setDessertData }}>
       <CartDataProvider values={{ cartItems, setCartItems, orderConfirmed, setOrderConfirmed, totalOrderPrice, setTotalOrderPrice }}>
         <div className="bg-rose100 p-8 xl:p-12 min-h-[100vh] w-full overflow-x-hidden flex justify-center items-center flex-col sm:flex-row sm:items-start font-red-hat-text">
-          <DessertContainer />
-          <Cart />
-          {
-            orderConfirmed ? <OrderConfirmedWindow /> : null
-          }
+          <Suspense fallback={<Loader height={'100vh'} />}>
+            <DessertContainer />
+            <Cart />
+            {
+              orderConfirmed ? <OrderConfirmedWindow /> : null
+            }
+          </Suspense>
         </div>
       </CartDataProvider>
     </DessertContextProvider>
