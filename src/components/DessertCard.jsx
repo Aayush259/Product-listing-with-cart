@@ -9,7 +9,7 @@ export default function DessertCard({ dessertItem }) {
     const dessertCategory = dessertItem['category'];
     const dessertPrice = dessertItem['price'];
     const dessertThumbnail = dessertItem['image']['thumbnail'];
-    const baseURL = '/Product-listing-with-cart';
+    const baseURL = '/Product-listing-with-cart/assets';
 
     // Getting cartItems and its setter function from cart data context.
     const { cartItems, setCartItems } = useCartData();
