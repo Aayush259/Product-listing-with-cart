@@ -15,6 +15,10 @@ export default {
         rose900: 'hsl(14, 65%, 9%)',
         redGiven: 'hsl(14, 86%, 42%)',
         greenGiven: 'hsl(159, 69%, 38%)',
+      },
+
+      fontFamily: {
+        'red-hat-text': '"Red Hat Text", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
       }
     },
   },
